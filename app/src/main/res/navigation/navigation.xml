@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/alarmListFragment">
+
+    <fragment
+        android:id="@+id/alarmListFragment"
+        android:name="com.example.alarmapplication.alarm.list.AlarmListFragment"
+        android:label="AlarmListFragment"
+        tools:layout="@layout/fragment_alarm_list">
+        <action
+            android:id="@+id/action_alarmListFragment_to_editAlarmFragment"
+            app:destination="@id/editAlarmFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editAlarmFragment"
+        android:name="com.example.alarmapplication.alarm.editalarm.EditAlarmFragment"
+        android:label="fragment_edit_alarm"
+        tools:layout="@layout/fragment_edit_alarm" />
+    <fragment
+        android:id="@+id/alarmDetailFragment"
+        android:name="com.example.alarmapplication.alarm.alarmdetails.AlarmDetailFragment"
+        android:label="fragment_alarm_detail"
+        tools:layout="@layout/fragment_alarm_detail">
+        <action
+            android:id="@+id/action_restart"
+            app:popUpTo="@+id/alarmListFragment" />
+
+    </fragment>
+
+</navigation>
+
+

@@ -9,7 +9,7 @@ class AlarmViewModelFactory(private val alarmActivity: AppCompatActivity) : View
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return if (modelClass.isAssignableFrom(AlarmViewModel::class.java)) {
-            AlarmViewModel(alarmActivity as AlarmActivity) as T
+            AlarmViewModel(alarmActivity as AlarmMainActivity) as T
         } else {
             throw IllegalArgumentException("Unknown ViewModel class")
         }

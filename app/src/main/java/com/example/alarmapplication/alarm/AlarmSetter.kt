@@ -5,23 +5,22 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import java.util.*
-import android.R.id
 
 
-class AlarmSetter(var alarmActivity: AlarmActivity) {
+class AlarmSetter(var alarmMainActivity: AlarmMainActivity) {
 
     private var alarmMgr: AlarmManager? = null
 
     init {
-        alarmMgr = alarmActivity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmMgr = alarmMainActivity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     }
 
     fun setAlarm(calender: Calendar) {
-        var alarmIntent = Intent(alarmActivity, AlarmReceiver::class.java)
+        var alarmIntent = Intent(alarmMainActivity, AlarmReceiver::class.java)
         alarmIntent.action = "uniqueCode"
 
         var pi = PendingIntent.getBroadcast(
-            alarmActivity,
+            alarmMainActivity,
             1,
             alarmIntent,
             PendingIntent.FLAG_UPDATE_CURRENT
@@ -39,9 +38,9 @@ class AlarmSetter(var alarmActivity: AlarmActivity) {
 
     fun cancelAlarm() {
 
-        var alarmIntent = Intent(alarmActivity, AlarmReceiver::class.java)
+        var alarmIntent = Intent(alarmMainActivity, AlarmReceiver::class.java)
         var pendingIntent = PendingIntent.getActivity(
-            alarmActivity,
+            alarmMainActivity,
             1, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT
         )
         pendingIntent.cancel()

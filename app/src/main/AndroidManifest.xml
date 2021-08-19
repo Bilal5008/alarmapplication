@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Alarmapplication">
 
         <activity
-            android:name=".alarm.AlarmActivity"
+            android:name=".alarm.AlarmMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
