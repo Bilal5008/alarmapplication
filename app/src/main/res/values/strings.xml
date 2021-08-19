@@ -5,4 +5,5 @@
     <string name="set_alarm">Set Alarm</string>
     <string name="cancel_alarm">Cancel Alarm</string>
     <string name="add_alarm">Add Alarm</string>
+    <string name="_00_00">00:00</string>
 </resources>

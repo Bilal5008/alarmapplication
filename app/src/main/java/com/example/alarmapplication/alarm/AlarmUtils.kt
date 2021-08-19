@@ -1,22 +1,5 @@
-/*
- * Copyright (C) 2018 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
-@file:JvmName("AlarmUtils")
-
-package com.example.background.alarm
+package com.example.alarmapplication.alarm
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -25,20 +8,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.alarmapplication.R
-import com.example.alarmapplication.alarm.*
-import com.example.background.*
 
-/**
- * Create a Notification that is shown as a heads-up notification if possible.
- *
- * For this codelab, this is used to show a notification so that you know when different steps
- * of the background work chain are starting
- *
- * @param message Message shown on the notification
- * @param context Context needed to create Toast
- */
-
-private const val TAG = "AlarmUtils"
  fun makeStatusNotification(message: String, context: Context) {
 
     // Make a channel if necessary

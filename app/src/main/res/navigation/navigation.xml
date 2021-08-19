@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_alarmListFragment_to_editAlarmFragment"
             app:destination="@id/editAlarmFragment" />
+        <action
+            android:id="@+id/action_alarmListFragment_to_alarmDetailFragment"
+            app:destination="@id/alarmDetailFragment" />
     </fragment>
 
     <fragment

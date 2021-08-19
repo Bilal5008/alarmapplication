@@ -5,9 +5,22 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="20dp"
+        android:paddingTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".alarm.list.AlarmListFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_alarm_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/add_alarm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_alarm">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/add_alarm"

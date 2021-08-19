@@ -17,20 +17,14 @@ import java.util.*
 
 
 class EditAlarmFragment : Fragment() {
-    var globalCalenderInstance = Calendar.getInstance()
-    lateinit var viewModel: AlarmViewModel
-    lateinit var viewModelFactory: AlarmViewModelFactory
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private var globalCalenderInstance: Calendar = Calendar.getInstance()
+    private lateinit var viewModel: AlarmViewModel
+    private lateinit var viewModelFactory: AlarmViewModelFactory
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
 
         val activityBinding: FragmentEditAlarmBinding = DataBindingUtil.inflate(
@@ -41,7 +35,7 @@ class EditAlarmFragment : Fragment() {
         viewModelFactory = AlarmViewModelFactory(activity as AppCompatActivity)
         viewModel = ViewModelProvider(this, viewModelFactory).get(AlarmViewModel::class.java)
 
-        activityBinding.timePicker.setOnTimeChangedListener { view, hourOfDay, minute ->
+        activityBinding.timePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
 
             globalCalenderInstance = Calendar.getInstance().apply {
                 timeInMillis = System.currentTimeMillis()
@@ -71,7 +65,7 @@ class EditAlarmFragment : Fragment() {
 
     }
 
-    fun updateLiveDataTimeText() {
+    private fun updateLiveDataTimeText() {
 
         var timeText = "Alarm set for: "
         timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(globalCalenderInstance.time)
@@ -81,7 +75,7 @@ class EditAlarmFragment : Fragment() {
     }
 
     // observes livedata from current activity
-    fun observeLiveData(activityBinding: FragmentEditAlarmBinding) {
+    private fun observeLiveData(activityBinding: FragmentEditAlarmBinding) {
         viewModel
             .getLiveData()
             .observe(activity as AppCompatActivity,
