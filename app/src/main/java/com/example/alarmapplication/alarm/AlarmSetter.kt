@@ -15,7 +15,7 @@ class AlarmSetter(var alarmMainActivity: AlarmMainActivity) {
         alarmMgr = alarmMainActivity.getSystemService(Context.ALARM_SERVICE) as AlarmManager
     }
 
-    fun setAlarm(calender: Calendar) {
+    fun setAlarm(calender: Calendar): Calendar {
         var alarmIntent = Intent(alarmMainActivity, AlarmReceiver::class.java)
         alarmIntent.action = "uniqueCode"
 
@@ -26,13 +26,14 @@ class AlarmSetter(var alarmMainActivity: AlarmMainActivity) {
             PendingIntent.FLAG_UPDATE_CURRENT
         )
 
-
+        val calenderTimeinMillis =  calender.timeInMillis
         alarmMgr?.setInexactRepeating(
             AlarmManager.RTC_WAKEUP,
-            calender.timeInMillis,
+            calenderTimeinMillis,
             AlarmManager.INTERVAL_DAY,
             pi
         )
+        return calender
 
     }
 

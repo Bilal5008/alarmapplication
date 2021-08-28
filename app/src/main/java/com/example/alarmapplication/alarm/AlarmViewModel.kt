@@ -3,23 +3,28 @@ package com.example.alarmapplication.alarm
 import androidx.lifecycle.ViewModel
 import java.util.*
 import androidx.lifecycle.MutableLiveData
+import java.text.DateFormat
 
 
 class AlarmViewModel(context: AlarmMainActivity) : ViewModel() {
 
-    var alarmSetter = AlarmSetter(context)
-    private var liveData = MutableLiveData<String>()
+  private   var alarmSetter = AlarmSetter(context)
+     var liveData = MutableLiveData<String>()
+    private lateinit var _alarm : Calendar
 
-    internal fun setAlarm(calender: Calendar) {
-        alarmSetter.setAlarm(calender)
-    }
+     val alarm: Calendar
+        get() = _alarm
 
-    fun getLiveData(): MutableLiveData<String> {
-        return liveData
-    }
 
     internal fun cancelAlarm() {
         alarmSetter.cancelAlarm()
+    }
+
+    fun setAlarm(calender: Calendar) {
+        _alarm =  alarmSetter.setAlarm(calender)
+        var timeText = "Alarm set for: "
+        timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(_alarm.time)
+        liveData.value = timeText
     }
 
 
